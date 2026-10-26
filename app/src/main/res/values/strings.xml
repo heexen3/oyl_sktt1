@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OYL Frutos Secos</string>
+    <string name="brand_tagline">Productos naturales más cerca de ti</string>
+
+    <!-- Títulos de las 15 pantallas -->
+    <string name="screen_welcome">Bienvenida</string>
+    <string name="screen_register">Crear cuenta</string>
+    <string name="screen_login">Iniciar sesión</string>
+    <string name="screen_home">Inicio</string>
+    <string name="screen_map">Mapa de tiendas</string>
+    <string name="screen_catalog">Catálogo</string>
+    <string name="screen_product_detail">Detalle de producto</string>
+    <string name="screen_scanner">Escáner QR</string>
+    <string name="screen_cart">Mi carrito</string>
+    <string name="screen_checkout">Confirmación del pedido</string>
+    <string name="screen_admin_products">Gestión de productos</string>
+    <string name="screen_admin_inventory">Gestión de inventario</string>
+    <string name="screen_orders">Pedidos</string>
+    <string name="screen_notifications">Notificaciones</string>
+    <string name="screen_profile">Perfil y configuración</string>
+
+    <!-- Barra inferior -->
+    <string name="nav_home">Inicio</string>
+    <string name="nav_map">Mapa</string>
+    <string name="nav_scanner">Escáner</string>
+    <string name="nav_orders">Pedidos</string>
+    <string name="nav_profile">Perfil</string>
+    <string name="nav_inventory">Inventario</string>
+
+    <!-- Placeholders Fase 1 -->
+    <string name="placeholder_message">Pantalla en construcción. Se implementará en la %1$s.</string>
+    <string name="placeholder_phase_2">Fase 2</string>
+    <string name="placeholder_phase_3">Fase 3</string>
+    <string name="placeholder_phase_4">Fase 4</string>
+    <string name="placeholder_phase_5">Fase 5</string>
+    <string name="placeholder_phase_6">Fase 6</string>
+    <string name="placeholder_phase_7">Fase 7</string>
+    <string name="placeholder_phase_8">Fase 8</string>
+    <string name="placeholder_product_id">Producto #%1$d</string>
+    <string name="placeholder_go_to">Ir a: %1$s</string>
+    <string name="preview_as_client">Vista previa como Cliente</string>
+    <string name="preview_as_admin">Vista previa como Administrador</string>
+    <string name="preview_note">Acceso temporal de la Fase 1 para revisar la navegación por rol. El inicio de sesión real llega en la Fase 2.</string>
+    <string name="action_start">Comenzar</string>
+    <string name="action_have_account">Ya tengo una cuenta</string>
+    <string name="action_create_account">Crear cuenta</string>
+    <string name="action_logout">Cerrar sesión</string>
+    <string name="action_back">Volver</string>
+    <string name="action_retry">Reintentar</string>
+    <string name="action_add">Agregar</string>
+    <string name="role_client">Cliente</string>
+    <string name="role_admin">Administrador</string>
+    <string name="current_role">Rol actual: %1$s</string>
+
+    <!-- Componentes comunes -->
+    <string name="state_loading">Cargando…</string>
+    <string name="state_error_generic">Ocurrió un error. Inténtalo nuevamente.</string>
+    <string name="state_empty">No hay elementos para mostrar.</string>
+    <string name="stock_available">Stock: %1$d</string>
+    <string name="stock_low">Stock bajo: %1$d</string>
+    <string name="stock_out">Sin stock</string>
+    <string name="cd_add_to_cart">Agregar %1$s al carrito</string>
+    <string name="cd_product_image">Imagen de %1$s</string>
+    <string name="cd_back">Volver atrás</string>
+    <string name="cache_outdated">Datos no actualizados</string>
+
+    <!-- Categorías (filtro de UI) -->
+    <string name="category_all">Todos</string>
+</resources>
