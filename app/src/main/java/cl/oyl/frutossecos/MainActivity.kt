@@ -23,7 +23,7 @@ class MainActivity : ComponentActivity() {
             OylTheme {
                 val state by viewModel.uiState.collectAsStateWithLifecycle()
                 if (state.loading) LoadingState()
-                else OylApp(state = state, onPreview = viewModel::preview, onLogout = viewModel::logout)
+                else OylApp(state = state, onLogout = viewModel::logout)
             }
         }
     }

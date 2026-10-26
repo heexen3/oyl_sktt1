@@ -39,9 +39,6 @@
     <string name="placeholder_phase_8">Fase 8</string>
     <string name="placeholder_product_id">Producto #%1$d</string>
     <string name="placeholder_go_to">Ir a: %1$s</string>
-    <string name="preview_as_client">Vista previa como Cliente</string>
-    <string name="preview_as_admin">Vista previa como Administrador</string>
-    <string name="preview_note">Acceso temporal de la Fase 1 para revisar la navegación por rol. El inicio de sesión real llega en la Fase 2.</string>
     <string name="action_start">Comenzar</string>
     <string name="action_have_account">Ya tengo una cuenta</string>
     <string name="action_create_account">Crear cuenta</string>

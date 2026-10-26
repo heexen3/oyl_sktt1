@@ -51,4 +51,7 @@ interface ProductDao {
 
     @Query("SELECT COUNT(*) FROM products")
     suspend fun count(): Int
+
+    @Query("SELECT * FROM products ORDER BY name")
+    fun observeAll(): Flow<List<ProductEntity>>
 }

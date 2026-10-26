@@ -27,6 +27,10 @@ import cl.oyl.frutossecos.core.ui.components.PrimaryButton
 import cl.oyl.frutossecos.core.ui.components.SecondaryButton
 import cl.oyl.frutossecos.domain.model.Role
 import cl.oyl.frutossecos.feature.placeholder.PlaceholderScreen
+import cl.oyl.frutossecos.feature.auth.LoginScreen
+import cl.oyl.frutossecos.feature.auth.RegisterScreen
+import cl.oyl.frutossecos.feature.auth.WelcomeScreen
+import androidx.compose.runtime.remember
 
 /** Navega a un destino de la barra inferior conservando el estado de cada pestaña. */
 fun NavHostController.navigateTopLevel(screen: Screen) {
@@ -40,7 +44,6 @@ fun NavHostController.navigateTopLevel(screen: Screen) {
 @Composable
 fun OylApp(
     state: MainUiState,
-    onPreview: (Role) -> Unit,
     onLogout: () -> Unit,
     navController: NavHostController = rememberNavController(),
 ) {
@@ -49,7 +52,9 @@ fun OylApp(
     val currentScreen = Screen.fromRoute(currentRoute)
     val role = state.role
     val showBottomBar = role != null && bottomItemsFor(role).any { it.screen.route == currentRoute }
-    val startDestination = if (role != null) Screen.Home.route else Screen.Welcome.route
+    // Se fija una sola vez: después la navegación se maneja con login/logout explícitos.
+    val startDestination = remember { if (role != null) Screen.Home.route else Screen.Welcome.route }
+    val goHome: () -> Unit = { navController.navigate(Screen.Home.route) { popUpTo(0) } }
 
     Scaffold(
         topBar = {
@@ -66,24 +71,21 @@ fun OylApp(
     ) { padding ->
         NavHost(navController, startDestination = startDestination, modifier = Modifier.padding(padding)) {
             composable(Screen.Welcome.route) {
-                PlaceholderScreen(stringResource(R.string.app_name), stringResource(R.string.placeholder_phase_2), subtitle = stringResource(R.string.brand_tagline)) {
-                    PrimaryButton(stringResource(R.string.action_start), { navController.navigate(Screen.Login.route) })
-                    SecondaryButton(stringResource(R.string.action_create_account), { navController.navigate(Screen.Register.route) })
-                }
+                WelcomeScreen(
+                    onStart = { navController.navigate(Screen.Login.route) },
+                    onLogin = { navController.navigate(Screen.Login.route) },
+                    onRegister = { navController.navigate(Screen.Register.route) },
+                )
             }
-            composable(Screen.Register.route) { Simple(Screen.Register, R.string.placeholder_phase_2) }
+            composable(Screen.Register.route) {
+                RegisterScreen(onRegistered = goHome, onLogin = {
+                    navController.navigate(Screen.Login.route) { popUpTo(Screen.Welcome.route) }
+                })
+            }
             composable(Screen.Login.route) {
-                PlaceholderScreen(stringResource(Screen.Login.titleRes), stringResource(R.string.placeholder_phase_2)) {
-                    Text(stringResource(R.string.preview_note), style = MaterialTheme.typography.bodySmall)
-                    PrimaryButton(stringResource(R.string.preview_as_client), {
-                        onPreview(Role.CLIENTE)
-                        navController.navigate(Screen.Home.route) { popUpTo(0) }
-                    })
-                    SecondaryButton(stringResource(R.string.preview_as_admin), {
-                        onPreview(Role.ADMINISTRADOR)
-                        navController.navigate(Screen.Home.route) { popUpTo(0) }
-                    })
-                }
+                LoginScreen(onLoggedIn = goHome, onRegister = {
+                    navController.navigate(Screen.Register.route) { popUpTo(Screen.Welcome.route) }
+                })
             }
             composable(Screen.Home.route) {
                 PlaceholderScreen(stringResource(Screen.Home.titleRes), stringResource(R.string.placeholder_phase_3),

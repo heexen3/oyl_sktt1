@@ -34,4 +34,7 @@ interface UserDao {
 
     @Query("SELECT COUNT(*) FROM users WHERE role = :role")
     suspend fun countByRole(role: Role): Int
+
+    @Query("SELECT id FROM users WHERE role = :role")
+    suspend fun idsByRole(role: Role): List<Long>
 }

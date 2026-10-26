@@ -24,7 +24,7 @@ interface CartDao {
 
     @Query(
         """SELECT c.productId AS productId, p.name AS name, p.price AS price, c.quantity AS quantity,
-                  p.stock AS stock, p.imageUrl AS imageUrl
+                  p.stock AS stock, COALESCE(p.imagePath, p.imageUrl) AS imageUrl
            FROM cart_items c INNER JOIN products p ON p.id = c.productId
            WHERE c.userId = :userId ORDER BY p.name"""
     )
@@ -47,4 +47,12 @@ interface CartDao {
 
     @Query("SELECT COALESCE(SUM(quantity), 0) FROM cart_items WHERE userId = :userId")
     fun observeCount(userId: Long): Flow<Int>
+
+    @Query(
+        """SELECT c.productId AS productId, p.name AS name, p.price AS price, c.quantity AS quantity,
+                  p.stock AS stock, COALESCE(p.imagePath, p.imageUrl) AS imageUrl
+           FROM cart_items c INNER JOIN products p ON p.id = c.productId
+           WHERE c.userId = :userId ORDER BY p.name"""
+    )
+    suspend fun getLines(userId: Long): List<CartLineRow>
 }
