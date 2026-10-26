@@ -61,6 +61,7 @@ fun OylBottomBar(role: Role?, currentRoute: String?, onNavigate: (Screen) -> Uni
                 colors = NavigationBarItemDefaults.colors(
                     selectedIconColor = MaterialTheme.colorScheme.onPrimary,
                     indicatorColor = MaterialTheme.colorScheme.primary,
+                    selectedTextColor = MaterialTheme.colorScheme.primary,
                 ),
             )
         }

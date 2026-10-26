@@ -55,6 +55,9 @@ import cl.oyl.frutossecos.core.ui.components.PrimaryButton
 import cl.oyl.frutossecos.core.ui.components.SecondaryButton
 import cl.oyl.frutossecos.core.ui.theme.OylGreen
 import cl.oyl.frutossecos.core.ui.theme.OylGreenDark
+import cl.oyl.frutossecos.core.ui.theme.OylCream
+import cl.oyl.frutossecos.core.ui.theme.OylOnBrand
+import cl.oyl.frutossecos.core.ui.theme.OylOnBrandMuted
 import cl.oyl.frutossecos.data.repository.AuthError
 import cl.oyl.frutossecos.domain.model.Role
 
@@ -81,12 +84,12 @@ fun WelcomeScreen(onStart: () -> Unit, onLogin: () -> Unit, onRegister: () -> Un
             Spacer(Modifier.height(24.dp))
             AnimatedVisibility(visible, enter = fadeIn(tween(700)) + slideInVertically(tween(700)) { -it / 3 }) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Box(Modifier.size(112.dp).background(MaterialTheme.colorScheme.surface, CircleShape), contentAlignment = Alignment.Center) {
+                    Box(Modifier.size(112.dp).background(OylCream, CircleShape), contentAlignment = Alignment.Center) {
                         Text("🌰", style = MaterialTheme.typography.displayMedium)
                     }
                     Spacer(Modifier.height(16.dp))
-                    Text(stringResource(R.string.app_name), style = MaterialTheme.typography.headlineLarge, color = MaterialTheme.colorScheme.onPrimary, fontWeight = FontWeight.Bold)
-                    Text(stringResource(R.string.brand_tagline), style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.85f), textAlign = TextAlign.Center)
+                    Text(stringResource(R.string.app_name), style = MaterialTheme.typography.headlineLarge, color = OylOnBrand, fontWeight = FontWeight.Bold)
+                    Text(stringResource(R.string.brand_tagline), style = MaterialTheme.typography.titleMedium, color = OylOnBrandMuted, textAlign = TextAlign.Center)
                 }
             }
             AnimatedVisibility(visible, enter = fadeIn(tween(900, delayMillis = 300))) {
