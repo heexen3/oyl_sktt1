@@ -16,7 +16,7 @@ Datos 100 % ficticios.
 | 6 — Gestión de productos (CRUD, foto desde galería, activar/desactivar) e inventario (entradas/salidas) | ✅ |
 | 7 — Pedidos (filtros, detalle, cambio de estado, cancelación) y notificaciones (lista + aviso local del sistema) | ✅ (FCM pendiente) |
 | 8 — Mapa osmdroid (tiendas, "Cómo llegar", ubicación opcional) y perfil (edición, avatar, permisos, cerrar sesión) | ✅ |
-| 9 — Backend Spring Boot (Kotlin + H2) | ⏳ pendiente |
+| 9 — Backend Spring Boot (Kotlin + H2) | ✅ (opcional; la app no lo usa en esta versión — ver `backend/README.md`) |
 | 10 — Integración con backend (repositorios `Remote*`) y pulido | ⏳ parcial (lint sin errores; integración remota pendiente) |
 | 11 — APK release firmado (R8 + shrinkResources) | ✅ |
 
@@ -25,7 +25,7 @@ Datos 100 % ficticios.
 - **Mapa:** osmdroid (OpenStreetMap, sin API key). Se reemplazó Maps Compose / Play Services Maps por `org.osmdroid:osmdroid-android`.
 - **Autenticación:** JWT (el `AuthInterceptor` envía `Authorization: Bearer <jwt>` cuando exista backend).
 - **Datos:** en esta versión la app funciona **solo con SQLite local (Room)**. El flag `BuildConfig.USE_REMOTE_REPOSITORIES` vale `false` y Hilt inyecta las implementaciones `Local*`. Las interfaces de repositorio quedan listas para agregar las `Remote*`.
-- **Backend:** Spring Boot en Kotlin con H2 para desarrollo/pruebas — pendiente (carpeta `backend/`).
+- **Backend:** Spring Boot 4.1 en Kotlin con H2 para desarrollo/pruebas (carpeta `backend/`, ver `backend/README.md`). La app aún no lo consume.
 - **Firebase / FCM:** la dependencia `firebase-messaging` está incluida, pero el plugin `com.google.gms.google-services` **no se aplica** porque requiere un `google-services.json` real (que nunca se versiona). Mientras tanto, los avisos (nuevo pedido, cambio de estado, stock bajo) se guardan en Room por usuario y se muestran como notificación local del sistema (canal propio, requiere `POST_NOTIFICATIONS` en Android 13+); al tocarla abre la pantalla relacionada.
 - **Repositorio:** Git local con ramas `main`, `develop` y `feature/*` (sin GitHub ni Trello por ahora).
 
@@ -72,7 +72,7 @@ app/src/main/java/cl/oyl/frutossecos/
 ├── data/ (local: Room entidades/DAOs/seed · remote: Retrofit · repository)
 ├── domain/model/
 └── feature/
-backend/   (pendiente)
+backend/   (Spring Boot + H2, opcional)
 ```
 
 ## Base de datos local (Room)
