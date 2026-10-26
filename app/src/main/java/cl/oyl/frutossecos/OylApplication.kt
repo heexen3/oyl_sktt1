@@ -7,6 +7,7 @@ import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+import org.osmdroid.config.Configuration
 
 @HiltAndroidApp
 class OylApplication : Application() {
@@ -15,6 +16,8 @@ class OylApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        // osmdroid exige un User-Agent propio para usar los tiles de OpenStreetMap.
+        Configuration.getInstance().userAgentValue = packageName
         // Siembra el admin demo, categorías, tiendas y productos en el primer arranque.
         appScope.launch { seeder.seedIfNeeded() }
     }

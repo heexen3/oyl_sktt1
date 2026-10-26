@@ -29,16 +29,6 @@
     <string name="nav_inventory">Inventario</string>
 
     <!-- Placeholders Fase 1 -->
-    <string name="placeholder_message">Pantalla en construcción. Se implementará en la %1$s.</string>
-    <string name="placeholder_phase_2">Fase 2</string>
-    <string name="placeholder_phase_3">Fase 3</string>
-    <string name="placeholder_phase_4">Fase 4</string>
-    <string name="placeholder_phase_5">Fase 5</string>
-    <string name="placeholder_phase_6">Fase 6</string>
-    <string name="placeholder_phase_7">Fase 7</string>
-    <string name="placeholder_phase_8">Fase 8</string>
-    <string name="placeholder_product_id">Producto #%1$d</string>
-    <string name="placeholder_go_to">Ir a: %1$s</string>
     <string name="action_start">Comenzar</string>
     <string name="action_have_account">Ya tengo una cuenta</string>
     <string name="action_create_account">Crear cuenta</string>

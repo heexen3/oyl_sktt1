@@ -33,6 +33,10 @@ enum class Screen(
         const val ARG_PRODUCT_ID = "id"
         const val ARG_PRESELECT_PRODUCT = "productId"
         fun productDetail(id: Long) = "product/$id"
-        fun fromRoute(route: String?): Screen? = entries.firstOrNull { it.route == route?.substringBefore('?') }
+        fun fromRoute(route: String?): Screen? {
+            val base = route?.substringBefore('?') ?: return null
+            return entries.firstOrNull { it.route == base }
+                ?: entries.firstOrNull { it.route.contains('{') && base.startsWith(it.route.substringBefore('{')) }
+        }
     }
 }

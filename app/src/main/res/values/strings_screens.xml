@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Acciones -->
+    <string name="action_add_to_cart">Agregar al carrito</string>
+    <string name="action_adjust_inventory">Ajustar inventario</string>
+    <string name="action_back_to_cart">Volver al carrito</string>
+    <string name="action_cancel">Cancelar</string>
+    <string name="action_close">Cerrar</string>
+    <string name="action_confirm_order">Confirmar pedido</string>
+    <string name="action_continue_purchase">Continuar compra</string>
+    <string name="action_continue_shopping">Seguir comprando</string>
+    <string name="action_edit_product">Editar producto</string>
+    <string name="action_fix_quantities">Ajustar cantidades al stock</string>
+    <string name="action_go_catalog">Ir al catálogo</string>
+    <string name="action_go_to_cart">Ver carrito</string>
+    <string name="action_save">Guardar</string>
+    <string name="action_view_orders">Ver mis pedidos</string>
+    <string name="cd_decrease">Disminuir cantidad</string>
+    <string name="cd_increase">Aumentar cantidad</string>
+    <string name="cd_remove">Quitar del carrito</string>
+
+    <!-- Mensajes -->
+    <string name="msg_added_to_cart">%1$s agregado al carrito</string>
+    <string name="msg_stock_limit">No hay más stock disponible de %1$s</string>
+
+    <!-- Inicio -->
+    <string name="home_greeting">¡Hola, %1$s!</string>
+    <string name="home_hero_client">Frutos secos frescos, directo a tu mesa</string>
+    <string name="home_hero_client_sub">Revisa el catálogo, escanea un QR en tienda o encuentra tu punto de retiro.</string>
+    <string name="home_hero_admin">Panel de administración</string>
+    <string name="home_hero_admin_sub">%1$d pedidos por validar · %2$d productos con stock bajo</string>
+    <string name="home_quick_access">Accesos rápidos</string>
+    <string name="home_featured">Destacados</string>
+    <string name="home_low_stock">Stock bajo</string>
+    <string name="home_low_stock_none">Todo el inventario está sobre el mínimo.</string>
+    <string name="home_recent_orders">Pedidos recientes</string>
+
+    <!-- Catálogo y detalle -->
+    <string name="catalog_search">Buscar productos</string>
+    <string name="catalog_empty">No encontramos productos con esos filtros.</string>
+    <string name="product_not_found">El producto no existe o ya no está disponible.</string>
+    <string name="product_presentation">Presentación</string>
+    <string name="product_weight">Peso</string>
+    <string name="product_grams">%1$d g</string>
+    <string name="product_origin">Origen</string>
+    <string name="product_qr">Código QR</string>
+    <string name="product_quantity">Cantidad</string>
+    <string name="product_in_cart">Ya tienes %1$d en tu carrito</string>
+
+    <!-- Carrito y checkout -->
+    <string name="cart_empty">Tu carrito está vacío.</string>
+    <string name="cart_subtotal">Subtotal</string>
+    <string name="cart_issue">Solo quedan %1$d unidades</string>
+    <string name="cart_has_issues">Algunos productos superan el stock disponible.</string>
+    <string name="cart_shipping_note">Despacho gratis desde %1$s. El retiro en tienda no tiene costo.</string>
+    <string name="checkout_summary">Resumen del pedido</string>
+    <string name="checkout_shipping">Envío</string>
+    <string name="checkout_free">Gratis</string>
+    <string name="checkout_total_label">Total</string>
+    <string name="checkout_delivery">Modalidad de entrega</string>
+    <string name="delivery_pickup">Retiro en tienda</string>
+    <string name="delivery_shipping">Despacho a domicilio</string>
+    <string name="delivery_pickup_note">Sin costo. Te avisaremos cuando esté listo.</string>
+    <string name="delivery_shipping_note">%1$s (gratis desde $25.000)</string>
+    <string name="checkout_contact">Datos de contacto</string>
+    <string name="checkout_need_address">Agrega una dirección en tu perfil para pedir despacho.</string>
+    <string name="checkout_issue_line">%1$s: solo quedan %2$d</string>
+    <string name="checkout_validation_note">El pedido quedará pendiente de validación por la tienda.</string>
+    <string name="checkout_stock_error">No hay stock suficiente para algunos productos.</string>
+    <string name="checkout_success">¡Pedido recibido!</string>
+    <string name="checkout_order_number">Pedido %1$s</string>
+    <string name="checkout_total">Total: %1$s</string>
+    <string name="checkout_success_note">Te notificaremos cada vez que cambie el estado de tu pedido.</string>
+
+    <!-- Pedidos -->
+    <string name="status_pending">Pendiente de validación</string>
+    <string name="status_confirmed">Confirmado</string>
+    <string name="status_prepared">Preparado</string>
+    <string name="status_delivered">Entregado</string>
+    <string name="status_cancelled">Cancelado</string>
+    <string name="orders_empty">Aún no hay pedidos.</string>
+    <string name="orders_advance_to">Marcar como: %1$s</string>
+    <string name="orders_cancel">Cancelar pedido</string>
+    <string name="orders_cancel_title">¿Cancelar pedido?</string>
+    <string name="orders_cancel_text">El pedido %1$s se cancelará y el stock será devuelto.</string>
+    <string name="orders_status_updated">Estado del pedido actualizado</string>
+    <string name="orders_invalid_transition">Ese cambio de estado no está permitido.</string>
+
+    <!-- Notificaciones -->
+    <string name="notif_empty">No tienes notificaciones.</string>
+    <string name="notif_mark_all">Marcar todas como leídas</string>
+    <string name="notif_permission_rationale">Activa las notificaciones para enterarte de tus pedidos y alertas de stock.</string>
+    <string name="notif_permission_allow">Permitir notificaciones</string>
+
+    <!-- Escáner -->
+    <string name="scanner_hint">Apunta la cámara al código QR del producto (formato OYL-P-…).</string>
+    <string name="scanner_paused">Escaneo en pausa</string>
+    <string name="scanner_permission_rationale">Necesitamos la cámara para leer los códigos QR de los productos.</string>
+    <string name="scanner_permission_denied">Sin permiso de cámara. Puedes ingresar el código manualmente o habilitarlo en Ajustes.</string>
+    <string name="scanner_permission_allow">Permitir cámara</string>
+    <string name="scanner_manual_label">Código manual (ej. OYL-P-00000001)</string>
+    <string name="scanner_manual_search">Buscar código</string>
+    <string name="scanner_not_found">No encontramos un producto para “%1$s”.</string>
+    <string name="scanner_found">Producto encontrado</string>
+    <string name="scanner_in_cart">En tu carrito: %1$d</string>
+    <string name="scanner_again">Escanear otro</string>
+
+    <!-- Administración -->
+    <string name="admin_new_product">Nuevo producto</string>
+    <string name="admin_filter_active">Activos</string>
+    <string name="admin_filter_inactive">Inactivos</string>
+    <string name="admin_filter_low">Stock bajo</string>
+    <string name="admin_active">Activo</string>
+    <string name="admin_inactive">Inactivo</string>
+    <string name="admin_pick_photo">Elegir foto</string>
+    <string name="admin_image_error">No se pudo cargar la imagen.</string>
+    <string name="admin_field_name">Nombre</string>
+    <string name="admin_field_category">Categoría</string>
+    <string name="admin_field_description">Descripción</string>
+    <string name="admin_field_price">Precio (CLP)</string>
+    <string name="admin_field_presentation">Presentación (ej. Bolsa 500 g)</string>
+    <string name="admin_field_weight">Peso (g)</string>
+    <string name="admin_field_origin">Origen</string>
+    <string name="admin_field_stock">Stock</string>
+    <string name="admin_field_min_stock">Stock mínimo</string>
+    <string name="admin_product_saved">Producto “%1$s” guardado</string>
+    <string name="admin_product_activated">%1$s activado</string>
+    <string name="admin_product_deactivated">%1$s desactivado</string>
+    <string name="inventory_pending_sync">%1$d movimientos pendientes de sincronizar con el servidor</string>
+    <string name="inventory_stock_line">Stock %1$d · mínimo %2$d</string>
+    <string name="inventory_current">Stock actual: %1$d</string>
+    <string name="inventory_in">Entrada</string>
+    <string name="inventory_out">Salida</string>
+    <string name="inventory_result">Stock resultante: %1$d</string>
+    <string name="inventory_invalid_qty">Ingresa una cantidad mayor a 0.</string>
+    <string name="inventory_not_enough">La salida supera el stock disponible (%1$s).</string>
+    <string name="inventory_adjusted">Inventario actualizado. %1$s</string>
+
+    <!-- Mapa -->
+    <string name="map_my_location">Mi ubicación</string>
+    <string name="map_type_store">Tienda</string>
+    <string name="map_type_pickup">Punto de retiro</string>
+    <string name="map_open">Abierto ahora</string>
+    <string name="map_closed">Cerrado ahora</string>
+    <string name="map_directions">Cómo llegar</string>
+
+    <!-- Perfil -->
+    <string name="profile_avatar">Avatar</string>
+    <string name="profile_data">Mis datos</string>
+    <string name="profile_saved">Perfil actualizado</string>
+    <string name="profile_notifications">Notificaciones</string>
+    <string name="profile_notifications_switch">Recibir avisos de pedidos y stock</string>
+    <string name="profile_permissions">Permisos</string>
+    <string name="profile_perm_granted">Concedido</string>
+    <string name="profile_perm_denied">No concedido</string>
+    <string name="profile_open_settings">Abrir ajustes de la app</string>
+    <string name="profile_logout_confirm">¿Seguro que quieres cerrar sesión?</string>
+    <string name="perm_camera">Cámara</string>
+    <string name="perm_location">Ubicación</string>
+    <string name="perm_notifications">Notificaciones</string>
+</resources>
