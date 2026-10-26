@@ -26,3 +26,4 @@ backend/target/
 backend/build/
 backend/.gradle/
 *.log
+backend/uploads/

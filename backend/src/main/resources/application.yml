@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: oyl-backend
+  datasource:
+    url: jdbc:h2:mem:oyl;DB_CLOSE_DELAY=-1
+    username: sa
+    password: ""
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    open-in-view: false
+  h2:
+    console:
+      enabled: true
+  servlet:
+    multipart:
+      max-file-size: 5MB
+server:
+  port: 8080
+oyl:
+  jwt:
+    # Solo para desarrollo. En otro entorno definir OYL_JWT_SECRET (mínimo 32 caracteres).
+    secret: ${OYL_JWT_SECRET:dev-only-secret-change-me-0123456789abcdef}
+    ttl-hours: 12
+  uploads-dir: ${OYL_UPLOADS_DIR:uploads}
+  demo-admin-password: ${OYL_ADMIN_PASSWORD:OylAdmin2026!}
