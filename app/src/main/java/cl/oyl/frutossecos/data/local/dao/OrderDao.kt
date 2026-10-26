@@ -50,4 +50,7 @@ interface OrderDao {
 
     @Query("SELECT COUNT(*) FROM orders WHERE status = :status")
     fun observeCountByStatus(status: OrderStatus): Flow<Int>
+
+    @Query("SELECT * FROM order_items WHERE orderId = :orderId")
+    suspend fun getItems(orderId: Long): List<OrderItemEntity>
 }

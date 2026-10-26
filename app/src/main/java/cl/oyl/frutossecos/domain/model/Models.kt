@@ -11,6 +11,7 @@ data class User(
     val avatarId: Int?,
     val avatarUri: String?,
     val role: Role,
+    val notificationsEnabled: Boolean = true,
 )
 
 data class Session(val userId: Long, val role: Role, val token: String?, val loggedAt: Long)
@@ -55,4 +56,30 @@ data class Store(
     val lng: Double,
     val hours: String,
     val type: StoreType,
+)
+
+data class Order(
+    val id: Long,
+    val userId: Long,
+    val number: String,
+    val status: OrderStatus,
+    val total: Long,
+    val shipping: Long,
+    val deliveryMode: DeliveryMode,
+    val createdAt: Long,
+)
+
+data class OrderItem(val productId: Long, val name: String, val unitPrice: Long, val quantity: Int) {
+    val subtotal: Long get() = unitPrice * quantity
+}
+
+data class AppNotification(
+    val id: Long,
+    val type: NotificationType,
+    val title: String,
+    val message: String,
+    val createdAt: Long,
+    val read: Boolean,
+    val targetRoute: String?,
+    val targetId: Long?,
 )

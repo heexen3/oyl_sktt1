@@ -22,4 +22,5 @@ data class UserEntity(
     val passwordHash: String,
     val salt: String,
     val role: Role,
+    val notificationsEnabled: Boolean = true,
 )
