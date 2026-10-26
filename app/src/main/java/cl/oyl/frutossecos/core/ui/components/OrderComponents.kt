@@ -19,7 +19,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import cl.oyl.frutossecos.R
-import cl.oyl.frutossecos.core.ui.theme.OylBrownContainer
 import cl.oyl.frutossecos.core.util.CurrencyFormatter
 import cl.oyl.frutossecos.domain.model.DeliveryMode
 import cl.oyl.frutossecos.domain.model.Order
@@ -48,10 +47,10 @@ fun deliveryLabel(mode: DeliveryMode): String =
 @Composable
 fun StatusChip(status: OrderStatus, modifier: Modifier = Modifier) {
     val (bg, fg) = when (status) {
-        OrderStatus.PENDIENTE_VALIDACION -> OylBrownContainer to MaterialTheme.colorScheme.secondary
+        OrderStatus.PENDIENTE_VALIDACION -> MaterialTheme.colorScheme.secondaryContainer to MaterialTheme.colorScheme.onSecondaryContainer
         OrderStatus.CONFIRMADO, OrderStatus.PREPARADO -> MaterialTheme.colorScheme.primaryContainer to MaterialTheme.colorScheme.onPrimaryContainer
         OrderStatus.ENTREGADO -> MaterialTheme.colorScheme.primary to MaterialTheme.colorScheme.onPrimary
-        OrderStatus.CANCELADO -> MaterialTheme.colorScheme.errorContainer to MaterialTheme.colorScheme.error
+        OrderStatus.CANCELADO -> MaterialTheme.colorScheme.errorContainer to MaterialTheme.colorScheme.onErrorContainer
     }
     Surface(color = bg, contentColor = fg, shape = RoundedCornerShape(50), modifier = modifier) {
         Text(statusLabel(status), style = MaterialTheme.typography.labelMedium, modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp))

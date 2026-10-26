@@ -35,6 +35,7 @@ import androidx.compose.ui.unit.dp
 import cl.oyl.frutossecos.R
 import cl.oyl.frutossecos.core.ui.theme.OylBeigeDark
 import cl.oyl.frutossecos.core.ui.theme.OylBrownContainer
+import cl.oyl.frutossecos.core.ui.theme.OylBrownInk
 import cl.oyl.frutossecos.core.util.CurrencyFormatter
 import cl.oyl.frutossecos.domain.model.Product
 import coil3.compose.AsyncImage
@@ -53,8 +54,8 @@ fun PriceText(amount: Long, modifier: Modifier = Modifier) {
 @Composable
 fun StockChip(stock: Int, minStock: Int, modifier: Modifier = Modifier) {
     val (text, container, content) = when {
-        stock <= 0 -> Triple(stringResource(R.string.stock_out), MaterialTheme.colorScheme.errorContainer, MaterialTheme.colorScheme.error)
-        stock <= minStock -> Triple(stringResource(R.string.stock_low, stock), OylBrownContainer, MaterialTheme.colorScheme.secondary)
+        stock <= 0 -> Triple(stringResource(R.string.stock_out), MaterialTheme.colorScheme.errorContainer, MaterialTheme.colorScheme.onErrorContainer)
+        stock <= minStock -> Triple(stringResource(R.string.stock_low, stock), MaterialTheme.colorScheme.secondaryContainer, MaterialTheme.colorScheme.onSecondaryContainer)
         else -> Triple(stringResource(R.string.stock_available, stock), MaterialTheme.colorScheme.primaryContainer, MaterialTheme.colorScheme.onPrimaryContainer)
     }
     Surface(color = container, contentColor = content, shape = RoundedCornerShape(50), modifier = modifier) {
@@ -71,7 +72,7 @@ fun ProductImage(name: String, imageUrl: String?, size: Dp, modifier: Modifier =
         contentAlignment = Alignment.Center,
     ) {
         if (imageUrl.isNullOrBlank()) {
-            Text(name.take(1).uppercase(), style = MaterialTheme.typography.headlineMedium, color = MaterialTheme.colorScheme.secondary)
+            Text(name.take(1).uppercase(), style = MaterialTheme.typography.headlineMedium, color = OylBrownInk)
         } else {
             AsyncImage(
                 model = imageUrl,

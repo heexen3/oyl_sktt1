@@ -61,6 +61,8 @@ import cl.oyl.frutossecos.core.ui.components.SectionHeader
 import cl.oyl.frutossecos.core.ui.components.StockChip
 import cl.oyl.frutossecos.core.ui.theme.OylGreen
 import cl.oyl.frutossecos.core.ui.theme.OylGreenDark
+import cl.oyl.frutossecos.core.ui.theme.OylOnBrand
+import cl.oyl.frutossecos.core.ui.theme.OylOnBrandMuted
 import cl.oyl.frutossecos.domain.model.Role
 
 @Composable
@@ -94,11 +96,11 @@ fun HomeScreen(
             Column(
                 Modifier.fillMaxWidth().background(Brush.horizontalGradient(listOf(OylGreenDark, OylGreen)), MaterialTheme.shapes.large).padding(20.dp),
             ) {
-                Text(stringResource(if (isAdmin) R.string.home_hero_admin else R.string.home_hero_client), style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.onPrimary, fontWeight = FontWeight.Bold)
+                Text(stringResource(if (isAdmin) R.string.home_hero_admin else R.string.home_hero_client), style = MaterialTheme.typography.titleMedium, color = OylOnBrand, fontWeight = FontWeight.Bold)
                 Text(
                     if (isAdmin) stringResource(R.string.home_hero_admin_sub, s.pendingOrders, s.lowStock.size)
                     else stringResource(R.string.home_hero_client_sub),
-                    style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.9f),
+                    style = MaterialTheme.typography.bodyMedium, color = OylOnBrandMuted,
                 )
             }
         }

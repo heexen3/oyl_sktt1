@@ -72,6 +72,14 @@ android {
         unitTests {
             isIncludeAndroidResources = true
             isReturnDefaultValues = true
+            all {
+                // Capturas de contraste (ContrastScreenshotTest): -PoylScreenshotDir=/ruta para elegir carpeta.
+                it.systemProperty(
+                    "oyl.screenshotDir",
+                    (project.findProperty("oylScreenshotDir") as String?)
+                        ?: layout.buildDirectory.dir("screenshots").get().asFile.path,
+                )
+            }
         }
     }
     packaging {
