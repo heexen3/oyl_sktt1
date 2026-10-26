@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     // AGP 9 trae soporte de Kotlin integrado: no se aplica org.jetbrains.kotlin.android.
@@ -28,9 +30,30 @@ android {
         buildConfigField("String", "API_BASE_URL", "\"http://10.0.2.2:8080/api/v1/\"")
     }
 
+    // Firma de release: keystore.properties (fuera de git) o variables de entorno OYL_*.
+    // Nunca se versiona el keystore ni sus contraseñas (ver README).
+    val signingProps = Properties().apply {
+        rootProject.file("keystore.properties").takeIf { it.exists() }?.inputStream()?.use { load(it) }
+    }
+    fun signingValue(key: String, env: String): String? = signingProps.getProperty(key) ?: System.getenv(env)
+    val releaseStoreFile = signingValue("storeFile", "OYL_KEYSTORE_FILE")
+
+    signingConfigs {
+        if (releaseStoreFile != null) {
+            create("release") {
+                storeFile = file(releaseStoreFile)
+                storePassword = signingValue("storePassword", "OYL_KEYSTORE_PASSWORD")
+                keyAlias = signingValue("keyAlias", "OYL_KEY_ALIAS")
+                keyPassword = signingValue("keyPassword", "OYL_KEY_PASSWORD")
+            }
+        }
+    }
+
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
+            signingConfig = signingConfigs.findByName("release")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -75,6 +98,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.material.icons.core)
+    implementation(libs.androidx.compose.material.icons.extended)
     implementation(libs.androidx.compose.animation)
     implementation(libs.androidx.navigation.compose)
 
@@ -120,6 +144,8 @@ dependencies {
     testImplementation(libs.androidx.test.core)
     testImplementation(libs.androidx.test.ext.junit)
     testImplementation(libs.androidx.arch.core.testing)
+    testImplementation(platform(libs.androidx.compose.bom))
+    testImplementation(libs.androidx.compose.ui.test.junit4)
 
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.test.ext.junit)

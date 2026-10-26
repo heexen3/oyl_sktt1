@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Ícono provisional: hoja estilizada sobre fondo verde OYL. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+    <path android:fillColor="#FFFBF7EF"
+        android:pathData="M54,30C40,38 34,52 38,70C52,70 66,62 70,46C66,40 60,34 54,30Z" />
+    <path android:fillColor="#FF1B5E3A"
+        android:pathData="M42,66L64,42L65.5,43.5L43.5,67.5Z" />
+</vector>

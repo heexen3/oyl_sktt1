@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Validaciones -->
+    <string name="error_required">Campo obligatorio</string>
+    <string name="error_email">Correo no válido</string>
+    <string name="error_phone">Teléfono no válido (9 dígitos, ej: +56 9 1234 5678)</string>
+    <string name="error_password_short">Mínimo 8 caracteres</string>
+    <string name="error_password_weak">Debe incluir letras y números</string>
+    <string name="error_alias">Alias de 3 a 20 caracteres (letras, números, . _ -)</string>
+    <string name="error_number">Número no válido</string>
+    <string name="error_negative">No puede ser negativo</string>
+    <string name="error_invalid_credentials">Usuario o contraseña incorrectos</string>
+    <string name="error_alias_taken">Ese alias ya está registrado</string>
+    <string name="error_email_taken">Ese correo ya está registrado</string>
+    <string name="cd_show_password">Mostrar contraseña</string>
+    <string name="cd_hide_password">Ocultar contraseña</string>
+
+    <!-- Bienvenida / acceso -->
+    <string name="welcome_intro">Compra frutos secos, semillas y deshidratados naturales con stock actualizado.</string>
+    <string name="welcome_feature_catalog">Catálogo por categorías con precios y stock</string>
+    <string name="welcome_feature_qr">Escanea el QR de cada producto en tienda</string>
+    <string name="welcome_feature_map">Encuentra la tienda y puntos de retiro</string>
+    <string name="welcome_feature_orders">Sigue el estado de tus pedidos</string>
+    <string name="login_heading">¡Hola de nuevo!</string>
+    <string name="login_admin_hint">Cuenta de demostración: admin / admin@admin.cl (contraseña en el README).</string>
+    <string name="login_no_account">¿No tienes cuenta? Regístrate</string>
+    <string name="action_login">Ingresar</string>
+    <string name="action_register">Crear mi cuenta</string>
+    <string name="register_heading">Crea tu cuenta de Cliente</string>
+    <string name="register_avatar">Elige tu avatar</string>
+    <string name="field_alias_or_email">Alias o correo</string>
+    <string name="field_password">Contraseña</string>
+    <string name="field_name">Nombre</string>
+    <string name="field_alias">Alias</string>
+    <string name="field_alias_help">Lo usarás para iniciar sesión</string>
+    <string name="field_email">Correo electrónico</string>
+    <string name="field_phone">Teléfono</string>
+    <string name="field_phone_help">Ej: +56 9 1234 5678</string>
+    <string name="field_address_optional">Dirección (opcional)</string>
+    <string name="notif_channel_name">Pedidos y alertas</string>
+</resources>
