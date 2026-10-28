@@ -1,5 +1,6 @@
 package cl.oyl.frutossecos.feature.home
 
+import cl.oyl.frutossecos.core.ui.theme.OylDimens
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
@@ -133,7 +134,7 @@ fun HomeScreen(
             if (s.lowStock.isEmpty()) Text(stringResource(R.string.home_low_stock_none), color = MaterialTheme.colorScheme.onSurfaceVariant)
             s.lowStock.take(5).forEach { p ->
                 Card(onClick = { onProduct(p.id) }, colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow)) {
-                    Row(Modifier.fillMaxWidth().padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
+                    Row(Modifier.fillMaxWidth().padding(OylDimens.CardPadding), verticalAlignment = Alignment.CenterVertically) {
                         Text(p.name, Modifier.weight(1f), style = MaterialTheme.typography.titleSmall)
                         StockChip(p.stock, p.minStock)
                     }

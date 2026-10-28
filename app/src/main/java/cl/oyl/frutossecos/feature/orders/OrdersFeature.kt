@@ -1,5 +1,6 @@
 package cl.oyl.frutossecos.feature.orders
 
+import cl.oyl.frutossecos.core.ui.theme.OylDimens
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ReceiptLong
 import androidx.compose.foundation.layout.Arrangement
@@ -135,7 +136,7 @@ fun OrdersScreen(vm: OrdersViewModel = hiltViewModel()) {
             items(OrderStatus.entries) { st -> FilterChip(s.status == st, { vm.onStatus(st) }, label = { Text(statusLabel(st)) }) }
         }
         if (s.orders.isEmpty()) EmptyState(stringResource(R.string.orders_empty), icon = Icons.AutoMirrored.Filled.ReceiptLong, hint = stringResource(R.string.orders_empty_hint))
-        else LazyColumn(contentPadding = PaddingValues(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+        else LazyColumn(contentPadding = PaddingValues(16.dp), verticalArrangement = Arrangement.spacedBy(OylDimens.ListSpacing)) {
             items(s.orders, key = { it.id }) { o ->
                 OrderCard(o, onClick = { vm.open(o.id) }, modifier = Modifier.animateItem(),
                     highlight = s.role == Role.ADMINISTRADOR && o.status == OrderStatus.PENDIENTE_VALIDACION)
@@ -161,7 +162,7 @@ private fun OrderDetailSheet(order: Order, items: List<OrderItem>, isAdmin: Bool
             }
             Text(deliveryLabel(order.deliveryMode))
             Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow)) {
-                Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                Column(Modifier.padding(OylDimens.CardPadding), verticalArrangement = Arrangement.spacedBy(4.dp)) {
                     items.forEach { i ->
                         Row { Text("${i.quantity} × ${i.name}", Modifier.weight(1f)); Text(CurrencyFormatter.clp(i.subtotal)) }
                     }

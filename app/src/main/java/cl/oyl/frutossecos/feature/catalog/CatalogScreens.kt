@@ -1,5 +1,6 @@
 package cl.oyl.frutossecos.feature.catalog
 
+import cl.oyl.frutossecos.core.ui.theme.OylDimens
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -81,7 +82,7 @@ fun CatalogScreen(onProduct: (Long) -> Unit, onCart: () -> Unit, vm: CatalogView
                 s.products.isEmpty() -> EmptyState(stringResource(R.string.catalog_empty), icon = Icons.Filled.SearchOff, hint = stringResource(R.string.catalog_empty_hint))
                 else -> LazyColumn(
                     contentPadding = PaddingValues(16.dp, 8.dp, 16.dp, 88.dp),
-                    verticalArrangement = Arrangement.spacedBy(10.dp),
+                    verticalArrangement = Arrangement.spacedBy(OylDimens.ListSpacing),
                 ) {
                     items(s.products, key = { it.id }) { p ->
                         ProductCard(p, onClick = { onProduct(p.id) }, modifier = Modifier.animateItem(),
