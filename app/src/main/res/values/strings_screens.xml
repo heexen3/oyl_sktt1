@@ -98,7 +98,7 @@
     <string name="scanner_permission_rationale">Necesitamos la cámara para leer los códigos QR de los productos.</string>
     <string name="scanner_permission_denied">Sin permiso de cámara. Puedes ingresar el código manualmente o habilitarlo en Ajustes.</string>
     <string name="scanner_permission_allow">Permitir cámara</string>
-    <string name="scanner_manual_label">Código manual (ej. OYL-P-00000001)</string>
+    <string name="scanner_manual_label">Código manual (ej. OYL-P-0001)</string>
     <string name="scanner_manual_search">Buscar código</string>
     <string name="scanner_not_found">No encontramos un producto para “%1$s”.</string>
     <string name="scanner_found">Producto encontrado</string>
