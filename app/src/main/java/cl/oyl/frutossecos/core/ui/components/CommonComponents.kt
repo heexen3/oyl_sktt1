@@ -1,5 +1,6 @@
 package cl.oyl.frutossecos.core.ui.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -8,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -25,6 +27,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -97,10 +100,43 @@ fun ErrorState(message: String, onRetry: (() -> Unit)? = null, modifier: Modifie
     }
 }
 
+/**
+ * Estado vacío: icono en un círculo tonal + mensaje + pista opcional + acción opcional.
+ * Colores en pares on-color de Material 3 (secondaryContainer/onSecondaryContainer), legibles en claro y oscuro.
+ */
 @Composable
-fun EmptyState(message: String, modifier: Modifier = Modifier) {
+fun EmptyState(
+    message: String,
+    modifier: Modifier = Modifier,
+    icon: ImageVector? = null,
+    hint: String? = null,
+    action: (@Composable () -> Unit)? = null,
+) {
     Box(modifier.fillMaxSize().padding(32.dp), contentAlignment = Alignment.Center) {
-        Text(message, textAlign = TextAlign.Center, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            if (icon != null) {
+                Box(
+                    Modifier.size(88.dp).background(MaterialTheme.colorScheme.secondaryContainer, CircleShape),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Icon(icon, contentDescription = null, tint = MaterialTheme.colorScheme.onSecondaryContainer, modifier = Modifier.size(40.dp))
+                }
+                Spacer(Modifier.height(4.dp))
+            }
+            Text(
+                message,
+                textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.titleMedium,
+                color = if (icon != null) MaterialTheme.colorScheme.onSurface else MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            if (hint != null) {
+                Text(hint, textAlign = TextAlign.Center, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+            if (action != null) {
+                Spacer(Modifier.height(8.dp))
+                action()
+            }
+        }
     }
 }
 

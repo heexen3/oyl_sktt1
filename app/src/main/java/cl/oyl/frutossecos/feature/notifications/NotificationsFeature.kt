@@ -1,5 +1,6 @@
 package cl.oyl.frutossecos.feature.notifications
 
+import cl.oyl.frutossecos.core.ui.theme.OylDimens
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Build
@@ -19,8 +20,9 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Inventory
 import androidx.compose.material.icons.filled.Notifications
-import androidx.compose.material.icons.filled.ReceiptLong
+import androidx.compose.material.icons.automirrored.filled.ReceiptLong
 import androidx.compose.material.icons.filled.Sync
+import androidx.compose.material.icons.filled.NotificationsNone
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -95,7 +97,7 @@ fun NotificationsScreen(onOpen: (String) -> Unit, vm: NotificationsViewModel = h
     Column(Modifier.fillMaxSize()) {
         if (!granted) {
             Card(Modifier.fillMaxWidth().padding(16.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer)) {
-                Column(Modifier.padding(14.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Column(Modifier.padding(OylDimens.CardPadding), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     Text(stringResource(R.string.notif_permission_rationale))
                     SecondaryButton(stringResource(R.string.notif_permission_allow), { if (Build.VERSION.SDK_INT >= 33) launcher.launch(Manifest.permission.POST_NOTIFICATIONS) })
                 }
@@ -104,18 +106,18 @@ fun NotificationsScreen(onOpen: (String) -> Unit, vm: NotificationsViewModel = h
         if (s.items.any { !it.read }) {
             TextButton(onClick = vm::markAll, modifier = Modifier.align(Alignment.End).padding(end = 8.dp)) { Text(stringResource(R.string.notif_mark_all)) }
         }
-        if (s.items.isEmpty()) EmptyState(stringResource(R.string.notif_empty))
-        else LazyColumn(contentPadding = PaddingValues(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        if (s.items.isEmpty()) EmptyState(stringResource(R.string.notif_empty), icon = Icons.Filled.NotificationsNone, hint = stringResource(R.string.notif_empty_hint))
+        else LazyColumn(contentPadding = PaddingValues(16.dp), verticalArrangement = Arrangement.spacedBy(OylDimens.ListSpacing)) {
             items(s.items, key = { it.id }) { n ->
                 Card(
                     onClick = { vm.markRead(n); n.destination()?.let(onOpen) },
                     modifier = Modifier.animateItem(),
                     colors = CardDefaults.cardColors(containerColor = if (n.read) MaterialTheme.colorScheme.surfaceContainerLow else MaterialTheme.colorScheme.primaryContainer),
                 ) {
-                    Row(Modifier.padding(14.dp), verticalAlignment = Alignment.Top) {
+                    Row(Modifier.padding(OylDimens.CardPadding), verticalAlignment = Alignment.Top) {
                         Icon(
                             when (n.type) {
-                                NotificationType.NUEVO_PEDIDO -> Icons.Filled.ReceiptLong
+                                NotificationType.NUEVO_PEDIDO -> Icons.AutoMirrored.Filled.ReceiptLong
                                 NotificationType.CAMBIO_ESTADO -> Icons.Filled.Sync
                                 NotificationType.STOCK_BAJO -> Icons.Filled.Inventory
                                 NotificationType.GENERAL -> Icons.Filled.Notifications
