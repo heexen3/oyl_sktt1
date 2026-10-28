@@ -5,6 +5,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.slideInVertically
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -84,7 +85,13 @@ fun WelcomeScreen(onStart: () -> Unit, onLogin: () -> Unit, onRegister: () -> Un
             Spacer(Modifier.height(24.dp))
             AnimatedVisibility(visible, enter = fadeIn(tween(700)) + slideInVertically(tween(700)) { -it / 3 }) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Box(Modifier.size(112.dp).background(OylCream, CircleShape), contentAlignment = Alignment.Center) {
+                    Box(
+                        Modifier.size(112.dp)
+                            .border(4.dp, OylOnBrand.copy(alpha = 0.35f), CircleShape)
+                            .padding(6.dp)
+                            .background(OylCream, CircleShape),
+                        contentAlignment = Alignment.Center,
+                    ) {
                         Text("🌰", style = MaterialTheme.typography.displayMedium)
                     }
                     Spacer(Modifier.height(16.dp))
@@ -117,8 +124,13 @@ fun WelcomeScreen(onStart: () -> Unit, onLogin: () -> Unit, onRegister: () -> Un
 @Composable
 private fun Feature(icon: ImageVector, text: String) {
     Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-        Icon(icon, contentDescription = null, tint = MaterialTheme.colorScheme.primary)
-        Text(text, style = MaterialTheme.typography.bodyMedium)
+        Box(
+            Modifier.size(36.dp).background(MaterialTheme.colorScheme.primaryContainer, CircleShape),
+            contentAlignment = Alignment.Center,
+        ) {
+            Icon(icon, contentDescription = null, tint = MaterialTheme.colorScheme.onPrimaryContainer, modifier = Modifier.size(20.dp))
+        }
+        Text(text, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurface)
     }
 }
 
