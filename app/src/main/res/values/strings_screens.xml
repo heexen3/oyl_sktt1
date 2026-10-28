@@ -38,6 +38,7 @@
     <!-- Catálogo y detalle -->
     <string name="catalog_search">Buscar productos</string>
     <string name="catalog_empty">No encontramos productos con esos filtros.</string>
+    <string name="catalog_empty_hint">Prueba con otra búsqueda o categoría.</string>
     <string name="product_not_found">El producto no existe o ya no está disponible.</string>
     <string name="product_presentation">Presentación</string>
     <string name="product_weight">Peso</string>
@@ -49,6 +50,7 @@
 
     <!-- Carrito y checkout -->
     <string name="cart_empty">Tu carrito está vacío.</string>
+    <string name="cart_empty_hint">Explora el catálogo y agrega tus frutos secos favoritos.</string>
     <string name="cart_subtotal">Subtotal</string>
     <string name="cart_issue">Solo quedan %1$d unidades</string>
     <string name="cart_has_issues">Algunos productos superan el stock disponible.</string>
@@ -79,6 +81,7 @@
     <string name="status_delivered">Entregado</string>
     <string name="status_cancelled">Cancelado</string>
     <string name="orders_empty">Aún no hay pedidos.</string>
+    <string name="orders_empty_hint">Los pedidos aparecerán aquí apenas se confirmen.</string>
     <string name="orders_advance_to">Marcar como: %1$s</string>
     <string name="orders_cancel">Cancelar pedido</string>
     <string name="orders_cancel_title">¿Cancelar pedido?</string>
@@ -88,6 +91,7 @@
 
     <!-- Notificaciones -->
     <string name="notif_empty">No tienes notificaciones.</string>
+    <string name="notif_empty_hint">Aquí verás los avisos de pedidos y de stock.</string>
     <string name="notif_mark_all">Marcar todas como leídas</string>
     <string name="notif_permission_rationale">Activa las notificaciones para enterarte de tus pedidos y alertas de stock.</string>
     <string name="notif_permission_allow">Permitir notificaciones</string>

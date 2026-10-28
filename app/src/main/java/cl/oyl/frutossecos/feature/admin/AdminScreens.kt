@@ -24,6 +24,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.PhotoCamera
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.SearchOff
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -98,7 +99,7 @@ fun AdminProductsScreen(onAdjust: (Long) -> Unit, vm: AdminProductsViewModel = h
                     })
                 }
             }
-            if (s.products.isEmpty()) EmptyState(stringResource(R.string.catalog_empty))
+            if (s.products.isEmpty()) EmptyState(stringResource(R.string.catalog_empty), icon = Icons.Filled.SearchOff, hint = stringResource(R.string.catalog_empty_hint))
             else LazyColumn(contentPadding = PaddingValues(16.dp, 8.dp, 16.dp, 88.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 items(s.products, key = { it.id }) { p ->
                     Card(

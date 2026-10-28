@@ -1,5 +1,7 @@
 package cl.oyl.frutossecos.feature.orders
 
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ReceiptLong
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -132,7 +134,7 @@ fun OrdersScreen(vm: OrdersViewModel = hiltViewModel()) {
             item { FilterChip(s.status == null, { vm.onStatus(null) }, label = { Text(stringResource(R.string.category_all)) }) }
             items(OrderStatus.entries) { st -> FilterChip(s.status == st, { vm.onStatus(st) }, label = { Text(statusLabel(st)) }) }
         }
-        if (s.orders.isEmpty()) EmptyState(stringResource(R.string.orders_empty))
+        if (s.orders.isEmpty()) EmptyState(stringResource(R.string.orders_empty), icon = Icons.AutoMirrored.Filled.ReceiptLong, hint = stringResource(R.string.orders_empty_hint))
         else LazyColumn(contentPadding = PaddingValues(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
             items(s.orders, key = { it.id }) { o ->
                 OrderCard(o, onClick = { vm.open(o.id) }, modifier = Modifier.animateItem(),

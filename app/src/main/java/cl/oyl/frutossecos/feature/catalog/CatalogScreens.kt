@@ -21,6 +21,7 @@ import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Remove
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.SearchOff
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
@@ -76,7 +77,7 @@ fun CatalogScreen(onProduct: (Long) -> Unit, onCart: () -> Unit, vm: CatalogView
             }
             when {
                 s.loading -> LoadingState()
-                s.products.isEmpty() -> EmptyState(stringResource(R.string.catalog_empty))
+                s.products.isEmpty() -> EmptyState(stringResource(R.string.catalog_empty), icon = Icons.Filled.SearchOff, hint = stringResource(R.string.catalog_empty_hint))
                 else -> LazyColumn(
                     contentPadding = PaddingValues(16.dp, 8.dp, 16.dp, 88.dp),
                     verticalArrangement = Arrangement.spacedBy(10.dp),

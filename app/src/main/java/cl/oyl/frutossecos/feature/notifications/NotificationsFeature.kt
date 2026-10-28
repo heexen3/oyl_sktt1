@@ -21,6 +21,7 @@ import androidx.compose.material.icons.filled.Inventory
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.ReceiptLong
 import androidx.compose.material.icons.filled.Sync
+import androidx.compose.material.icons.filled.NotificationsNone
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -104,7 +105,7 @@ fun NotificationsScreen(onOpen: (String) -> Unit, vm: NotificationsViewModel = h
         if (s.items.any { !it.read }) {
             TextButton(onClick = vm::markAll, modifier = Modifier.align(Alignment.End).padding(end = 8.dp)) { Text(stringResource(R.string.notif_mark_all)) }
         }
-        if (s.items.isEmpty()) EmptyState(stringResource(R.string.notif_empty))
+        if (s.items.isEmpty()) EmptyState(stringResource(R.string.notif_empty), icon = Icons.Filled.NotificationsNone, hint = stringResource(R.string.notif_empty_hint))
         else LazyColumn(contentPadding = PaddingValues(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
             items(s.items, key = { it.id }) { n ->
                 Card(
