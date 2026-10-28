@@ -24,7 +24,7 @@ import androidx.compose.material.icons.filled.Inventory2
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.QrCodeScanner
-import androidx.compose.material.icons.filled.ReceiptLong
+import androidx.compose.material.icons.automirrored.filled.ReceiptLong
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material.icons.filled.Storefront
 import androidx.compose.material3.Badge
@@ -109,7 +109,7 @@ fun HomeScreen(
         val shortcuts = if (isAdmin) listOf(
             Triple(Icons.Filled.Inventory2, R.string.screen_admin_products, Screen.AdminProducts.route),
             Triple(Icons.Filled.Inventory, R.string.screen_admin_inventory, Screen.AdminInventory.route),
-            Triple(Icons.Filled.ReceiptLong, R.string.screen_orders, Screen.Orders.route),
+            Triple(Icons.AutoMirrored.Filled.ReceiptLong, R.string.screen_orders, Screen.Orders.route),
             Triple(Icons.Filled.QrCodeScanner, R.string.screen_scanner, Screen.Scanner.route),
             Triple(Icons.Filled.Storefront, R.string.screen_catalog, Screen.Catalog.route),
             Triple(Icons.Filled.Notifications, R.string.screen_notifications, Screen.Notifications.route),
@@ -118,7 +118,7 @@ fun HomeScreen(
             Triple(Icons.Filled.ShoppingCart, R.string.screen_cart, Screen.Cart.route),
             Triple(Icons.Filled.QrCodeScanner, R.string.screen_scanner, Screen.Scanner.route),
             Triple(Icons.Filled.LocationOn, R.string.screen_map, Screen.Map.route),
-            Triple(Icons.Filled.ReceiptLong, R.string.screen_orders, Screen.Orders.route),
+            Triple(Icons.AutoMirrored.Filled.ReceiptLong, R.string.screen_orders, Screen.Orders.route),
             Triple(Icons.Filled.Notifications, R.string.screen_notifications, Screen.Notifications.route),
         )
         shortcuts.chunked(3).forEach { row ->

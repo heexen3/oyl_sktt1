@@ -20,7 +20,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Inventory
 import androidx.compose.material.icons.filled.Notifications
-import androidx.compose.material.icons.filled.ReceiptLong
+import androidx.compose.material.icons.automirrored.filled.ReceiptLong
 import androidx.compose.material.icons.filled.Sync
 import androidx.compose.material.icons.filled.NotificationsNone
 import androidx.compose.material3.Card
@@ -117,7 +117,7 @@ fun NotificationsScreen(onOpen: (String) -> Unit, vm: NotificationsViewModel = h
                     Row(Modifier.padding(OylDimens.CardPadding), verticalAlignment = Alignment.Top) {
                         Icon(
                             when (n.type) {
-                                NotificationType.NUEVO_PEDIDO -> Icons.Filled.ReceiptLong
+                                NotificationType.NUEVO_PEDIDO -> Icons.AutoMirrored.Filled.ReceiptLong
                                 NotificationType.CAMBIO_ESTADO -> Icons.Filled.Sync
                                 NotificationType.STOCK_BAJO -> Icons.Filled.Inventory
                                 NotificationType.GENERAL -> Icons.Filled.Notifications
