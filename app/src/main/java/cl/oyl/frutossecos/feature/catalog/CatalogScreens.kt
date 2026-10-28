@@ -1,5 +1,6 @@
 package cl.oyl.frutossecos.feature.catalog
 
+import cl.oyl.frutossecos.core.ui.theme.OylDimens
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -21,6 +22,7 @@ import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Remove
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.SearchOff
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
@@ -28,6 +30,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.FilterChip
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -76,10 +79,10 @@ fun CatalogScreen(onProduct: (Long) -> Unit, onCart: () -> Unit, vm: CatalogView
             }
             when {
                 s.loading -> LoadingState()
-                s.products.isEmpty() -> EmptyState(stringResource(R.string.catalog_empty))
+                s.products.isEmpty() -> EmptyState(stringResource(R.string.catalog_empty), icon = Icons.Filled.SearchOff, hint = stringResource(R.string.catalog_empty_hint))
                 else -> LazyColumn(
                     contentPadding = PaddingValues(16.dp, 8.dp, 16.dp, 88.dp),
-                    verticalArrangement = Arrangement.spacedBy(10.dp),
+                    verticalArrangement = Arrangement.spacedBy(OylDimens.ListSpacing),
                 ) {
                     items(s.products, key = { it.id }) { p ->
                         ProductCard(p, onClick = { onProduct(p.id) }, modifier = Modifier.animateItem(),
@@ -125,12 +128,24 @@ fun ProductDetailScreen(onEdit: (Long) -> Unit, onCart: () -> Unit, onAdjust: (L
                 PriceText(p.price)
             }
             StockChip(p.stock, p.minStock)
+            if (p.description.isNotBlank()) {
+                Text(p.description, style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onSurface)
+            }
             Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow)) {
-                Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                    Text(p.description, style = MaterialTheme.typography.bodyLarge)
+                Column(Modifier.fillMaxWidth().padding(16.dp)) {
+                    Text(
+                        stringResource(R.string.product_specs_title),
+                        style = MaterialTheme.typography.titleSmall,
+                        fontWeight = FontWeight.SemiBold,
+                        color = MaterialTheme.colorScheme.onSurface,
+                        modifier = Modifier.padding(bottom = 4.dp),
+                    )
                     InfoRow(stringResource(R.string.product_presentation), p.presentation)
+                    HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
                     InfoRow(stringResource(R.string.product_weight), stringResource(R.string.product_grams, p.weightGrams))
+                    HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
                     InfoRow(stringResource(R.string.product_origin), p.origin)
+                    HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
                     InfoRow(stringResource(R.string.product_qr), p.qrCode)
                 }
             }
@@ -157,8 +172,8 @@ fun ProductDetailScreen(onEdit: (Long) -> Unit, onCart: () -> Unit, onAdjust: (L
 
 @Composable
 private fun InfoRow(label: String, value: String) {
-    Row {
+    Row(Modifier.fillMaxWidth().padding(vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
         Text(label, Modifier.weight(1f), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-        Text(value, style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.Medium)
+        Text(value, style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.Medium, color = MaterialTheme.colorScheme.onSurface)
     }
 }

@@ -1,5 +1,6 @@
 package cl.oyl.frutossecos.feature.profile
 
+import cl.oyl.frutossecos.core.ui.theme.OylDimens
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -135,7 +136,7 @@ fun ProfileScreen(onLogout: () -> Unit, vm: ProfileViewModel = hiltViewModel()) 
         }
         SectionHeader(stringResource(R.string.profile_permissions))
         Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow)) {
-            Column(Modifier.padding(14.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+            Column(Modifier.padding(OylDimens.CardPadding), verticalArrangement = Arrangement.spacedBy(4.dp)) {
                 perms.forEach { (label, ok) ->
                     Row {
                         Text(stringResource(label), Modifier.weight(1f))

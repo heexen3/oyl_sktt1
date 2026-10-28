@@ -1,5 +1,6 @@
 package cl.oyl.frutossecos.feature.admin
 
+import cl.oyl.frutossecos.core.ui.theme.OylDimens
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -24,6 +25,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.PhotoCamera
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.SearchOff
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -98,14 +100,14 @@ fun AdminProductsScreen(onAdjust: (Long) -> Unit, vm: AdminProductsViewModel = h
                     })
                 }
             }
-            if (s.products.isEmpty()) EmptyState(stringResource(R.string.catalog_empty))
-            else LazyColumn(contentPadding = PaddingValues(16.dp, 8.dp, 16.dp, 88.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            if (s.products.isEmpty()) EmptyState(stringResource(R.string.catalog_empty), icon = Icons.Filled.SearchOff, hint = stringResource(R.string.catalog_empty_hint))
+            else LazyColumn(contentPadding = PaddingValues(16.dp, 8.dp, 16.dp, 88.dp), verticalArrangement = Arrangement.spacedBy(OylDimens.ListSpacing)) {
                 items(s.products, key = { it.id }) { p ->
                     Card(
                         onClick = { vm.edit(p) }, modifier = Modifier.animateItem(),
                         colors = CardDefaults.cardColors(containerColor = if (p.active) MaterialTheme.colorScheme.surfaceContainerLow else MaterialTheme.colorScheme.surfaceVariant),
                     ) {
-                        Row(Modifier.padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
+                        Row(Modifier.padding(OylDimens.CardPadding), verticalAlignment = Alignment.CenterVertically) {
                             ProductImage(p.name, p.imageUrl, 56.dp)
                             Spacer(Modifier.width(10.dp))
                             Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(2.dp)) {
@@ -182,10 +184,10 @@ fun AdminInventoryScreen(vm: AdminInventoryViewModel = hiltViewModel()) {
             Text(stringResource(R.string.inventory_pending_sync, s.pendingSync), style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.secondary, modifier = Modifier.padding(horizontal = 16.dp))
         }
-        LazyColumn(contentPadding = PaddingValues(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        LazyColumn(contentPadding = PaddingValues(16.dp), verticalArrangement = Arrangement.spacedBy(OylDimens.ListSpacing)) {
             items(s.products, key = { it.id }) { p ->
                 Card(onClick = { vm.open(p) }, modifier = Modifier.animateItem(), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow)) {
-                    Row(Modifier.padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
+                    Row(Modifier.padding(OylDimens.CardPadding), verticalAlignment = Alignment.CenterVertically) {
                         Column(Modifier.weight(1f)) {
                             Text(p.name, style = MaterialTheme.typography.titleSmall)
                             Text(stringResource(R.string.inventory_stock_line, p.stock, p.minStock), style = MaterialTheme.typography.bodySmall)

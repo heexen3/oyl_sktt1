@@ -1,5 +1,6 @@
 package cl.oyl.frutossecos.feature.cart
 
+import cl.oyl.frutossecos.core.ui.theme.OylDimens
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
@@ -24,6 +25,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Remove
@@ -69,19 +71,21 @@ fun CartScreen(onContinue: () -> Unit, onCatalog: () -> Unit, vm: CartViewModel 
     val s by vm.state.collectAsStateWithLifecycle()
     when {
         s.loading -> LoadingState()
-        s.lines.isEmpty() -> Column(Modifier.fillMaxSize().padding(24.dp), verticalArrangement = Arrangement.Center) {
-            EmptyState(stringResource(R.string.cart_empty))
-            PrimaryButton(stringResource(R.string.action_go_catalog), onCatalog)
-        }
+        s.lines.isEmpty() -> EmptyState(
+            stringResource(R.string.cart_empty),
+            icon = Icons.Filled.ShoppingCart,
+            hint = stringResource(R.string.cart_empty_hint),
+            action = { PrimaryButton(stringResource(R.string.action_go_catalog), onCatalog) },
+        )
         else -> Column(Modifier.fillMaxSize()) {
-            LazyColumn(Modifier.weight(1f), contentPadding = PaddingValues(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            LazyColumn(Modifier.weight(1f), contentPadding = PaddingValues(16.dp), verticalArrangement = Arrangement.spacedBy(OylDimens.ListSpacing)) {
                 items(s.lines, key = { it.productId }) { line ->
                     val issue = s.issues.firstOrNull { it.productId == line.productId }
                     Card(
                         modifier = Modifier.animateItem(),
                         colors = CardDefaults.cardColors(containerColor = if (issue != null) MaterialTheme.colorScheme.errorContainer else MaterialTheme.colorScheme.surfaceContainerLow),
                     ) {
-                        Row(Modifier.padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
+                        Row(Modifier.padding(OylDimens.CardPadding), verticalAlignment = Alignment.CenterVertically) {
                             ProductImage(line.name, line.imageUrl, 56.dp)
                             Spacer(Modifier.width(10.dp))
                             Column(Modifier.weight(1f)) {
@@ -154,11 +158,11 @@ fun CheckoutScreen(onOrders: () -> Unit, onContinueShopping: () -> Unit, onBackT
                 SecondaryButton(stringResource(R.string.action_continue_shopping), onContinueShopping)
             }
         }
-        s.lines.isEmpty() -> EmptyState(stringResource(R.string.cart_empty))
+        s.lines.isEmpty() -> EmptyState(stringResource(R.string.cart_empty), icon = Icons.Filled.ShoppingCart, hint = stringResource(R.string.cart_empty_hint))
         else -> Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
             Text(stringResource(R.string.checkout_summary), style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
             Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow)) {
-                Column(Modifier.padding(14.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                Column(Modifier.padding(OylDimens.CardPadding), verticalArrangement = Arrangement.spacedBy(6.dp)) {
                     s.lines.forEach { l ->
                         SummaryRow("${l.quantity} × ${l.name}", CurrencyFormatter.clp(l.subtotal))
                     }

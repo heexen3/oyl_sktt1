@@ -1,5 +1,6 @@
 package cl.oyl.frutossecos.core.ui.components
 
+import cl.oyl.frutossecos.core.ui.theme.OylDimens
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -96,7 +97,7 @@ fun ProductCard(
         modifier = modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow),
     ) {
-        Row(Modifier.padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
+        Row(Modifier.padding(OylDimens.CardPadding), verticalAlignment = Alignment.CenterVertically) {
             ProductImage(product.name, product.imageUrl, 64.dp)
             Spacer(Modifier.width(12.dp))
             Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(2.dp)) {
