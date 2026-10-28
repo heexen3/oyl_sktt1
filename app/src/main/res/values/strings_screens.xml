@@ -40,6 +40,7 @@
     <string name="catalog_empty">No encontramos productos con esos filtros.</string>
     <string name="catalog_empty_hint">Prueba con otra búsqueda o categoría.</string>
     <string name="product_not_found">El producto no existe o ya no está disponible.</string>
+    <string name="product_specs_title">Ficha del producto</string>
     <string name="product_presentation">Presentación</string>
     <string name="product_weight">Peso</string>
     <string name="product_grams">%1$d g</string>
